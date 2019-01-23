@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Expense Claimers</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Expense date</th>
+      <th>Claimer name</th>
+      <th>Description</th>
+      <th>Approved</th>
+      <th>Amount cents</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @expense_claimers.each do |expense_claimer| %>
+      <tr>
+        <td><%= expense_claimer.expense_at %></td>
+        <td><%= expense_claimer.claimer_name %></td>
+        <td><%= expense_claimer.description %></td>
+        <td><%= expense_claimer.approved_status %></td>
+        <td><%= humanized_money_with_symbol expense_claimer.amount %></td>
+        <td><%= link_to 'Show', expense_claimer %></td>
+        <td><%= link_to 'Edit', edit_expense_claimer_path(expense_claimer) %></td>
+        <td><%= link_to 'Destroy', expense_claimer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Expense Claimer', new_expense_claimer_path %>

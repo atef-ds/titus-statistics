@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Expense date:</strong>
+  <%= @expense_claimer.expense_at %>
+</p>
+
+<p>
+  <strong>Claimer name:</strong>
+  <%= @expense_claimer.claimer_name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @expense_claimer.description %>
+</p>
+
+<p>
+  <strong>Approved:</strong>
+  <%= @expense_claimer.approved %>
+</p>
+
+<p>
+  <strong>Amount :</strong>
+  <%= humanized_money_with_symbol @expense_claimer.amount %>
+</p>
+
+<%= link_to 'Edit', edit_expense_claimer_path(@expense_claimer) %> |
+<%= link_to 'Back', expense_claimers_path %>

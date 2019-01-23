@@ -10,6 +10,19 @@
   </head>
 
   <body>
-    <%= yield %>
+
+<nav id="navbar-titus" class="navbar navbar-light bg-light">
+  <a class="navbar-brand" href="#">Titus Company</a>
+  <ul class="nav nav-pills">
+    <li class="nav-item">
+      <%= link_to 'Expense claimers', expense_claimers_url, class: 'nav-link' %>
+    </li>
+  </ul>
+</nav>
+<div data-target="#navbar-titus" data-offset="0" class='container'>
+ <%= yield %>
+</div>
+
+    
   </body>
 </html>

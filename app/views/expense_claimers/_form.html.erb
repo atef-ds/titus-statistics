@@ -1,0 +1,49 @@
+<%= form_with(model: expense_claimer, local: true) do |form| %>
+  <% if expense_claimer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(expense_claimer.errors.count, "error") %> prohibited this expense_claimer from being saved:</h2>
+
+      <ul>
+      <% expense_claimer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :expense_date %>
+    <div class="input-group">
+    <%= form.date_select :expense_date, {}, class: 'form-control' %>
+     </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :claimer_name %>
+    <%= form.select :claimer_name, ExpenseClaimer::CLAIMERS, {}, {class: 'form-control'}  %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control'  %>
+  </div>
+
+  <div class="field form-check">
+    <%= form.check_box :approved, class: 'form-check-input' %>
+    <%= form.label :approved, class: 'form-check-label' %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :amount %>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><%=  Money.default_currency.symbol %></span>
+      </div>
+      <%= form.number_field :amount, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
